@@ -338,6 +338,7 @@ class CVELCMFormTest(TestCase):
             data={
                 "name": "CVE-2021-34699",
                 "published_date": "2021-09-23",
+                "last_modified_date": "2022-04-23",
                 "link": "https://www.cvedetails.com/cve/CVE-2021-34699/",
                 "status": self.status,
                 "description": "Thanos",

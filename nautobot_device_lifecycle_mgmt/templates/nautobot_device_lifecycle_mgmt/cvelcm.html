@@ -55,6 +55,10 @@
                     <td>{% if object.published_date %} {{ object.published_date }} {% else %} &mdash; {% endif %}</td>
                 </tr>
                 <tr>
+                    <td>Last Modified Date</td>
+                    <td>{% if object.last_modified_date %} {{ object.last_modified_date }} {% else %} &mdash; {% endif %}</td>
+                </tr>
+                <tr>
                     <td>Link</td>
                     <td><a href="{{ object.link }}" target="_blank">{{ object.link }}</td>
                 </tr>

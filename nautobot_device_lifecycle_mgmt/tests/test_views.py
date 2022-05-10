@@ -183,16 +183,17 @@ class CVELCMViewTest(ViewTestCases.PrimaryObjectViewTestCase):  # pylint: disabl
         "name": "Test 1",
         "slug": "test-1",
         "published_date": datetime.date(2022, 1, 1),
+        "last_modified_date": datetime.date(2022, 2, 1),
         "link": "https://www.cvedetails.com/cve/CVE-2022-0001/",
     }
 
     @classmethod
     def setUpTestData(cls):
         CVELCM.objects.create(
-            name="CVE-2021-1391", published_date="2021-03-24", link="https://www.cvedetails.com/cve/CVE-2021-1391/"
+            name="CVE-2021-1391", published_date="2021-03-24", last_modified_date="2021-03-25", link="https://www.cvedetails.com/cve/CVE-2021-1391/"
         )
         CVELCM.objects.create(
-            name="CVE-2021-34699", published_date="2021-09-23", link="https://www.cvedetails.com/cve/CVE-2021-34699/"
+            name="CVE-2021-34699", published_date="2021-09-23", last_modified_date="2022-03-24", link="https://www.cvedetails.com/cve/CVE-2021-34699/"
         )
 
     def test_bulk_import_objects_with_constrained_permission(self):
