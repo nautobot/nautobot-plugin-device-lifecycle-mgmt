@@ -81,6 +81,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Last Updated by Vendor</td>
+                    <td>
+                        {% if object.vendor_last_updated %} {{ object.vendor_last_updated }} {% else %} &mdash; {% endif %}
+                    </td>
+                </tr>
+                <tr>
                     <td>Documentation URL</td>
                     <td>
                     {% if object.documentation_url %}

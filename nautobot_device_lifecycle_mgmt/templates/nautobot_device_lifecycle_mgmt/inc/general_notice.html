@@ -31,6 +31,10 @@
                     <td>{{ notice.end_of_security_patches }}</td>
                 </tr>
                 <tr>
+                    <td>Last Updated by Vendor</td>
+                    <td>{{ notice.vendor_last_updated }}</td>
+                </tr>
+                <tr>
                     <td>Documentation URL</td>
                     <td>
                     {% if notice.documentation_url %}

@@ -95,6 +95,7 @@ class HardwareLCMTable(BaseTable):
             "end_of_support",
             "end_of_sw_releases",
             "end_of_security_patches",
+            "vendor_last_updated",
             "documentation_url",
             "actions",
         )
