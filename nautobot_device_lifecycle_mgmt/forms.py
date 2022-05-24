@@ -207,6 +207,7 @@ class SoftwareLCMForm(BootstrapMixin, CustomFieldModelForm, RelationshipModelFor
         widgets = {
             "release_date": DatePicker(),
             "end_of_support": DatePicker(),
+            "vendor_last_updated": DatePicker(),
         }
 
 
@@ -226,6 +227,8 @@ class SoftwareLCMFilterForm(BootstrapMixin, forms.ModelForm):
     release_date_after = forms.DateField(label="Release Date After", required=False, widget=DatePicker())
     end_of_support_before = forms.DateField(label="End of Software Support Before", required=False, widget=DatePicker())
     end_of_support_after = forms.DateField(label="End of Software Support After", required=False, widget=DatePicker())
+    vendor_last_updated_before = forms.DateField(label="Vendor Last Updated Before", required=False, widget=DatePicker())
+    vendor_last_updated_after = forms.DateField(label="Vendor Last Updated After", required=False, widget=DatePicker())
 
     class Meta:
         """Meta attributes."""
@@ -239,6 +242,8 @@ class SoftwareLCMFilterForm(BootstrapMixin, forms.ModelForm):
             "release_date_after",
             "end_of_support_before",
             "end_of_support_after",
+            "vendor_last_updated_after",
+            "vendor_last_updated_before",
             "documentation_url",
             "long_term_support",
             "pre_release",
@@ -1057,6 +1062,9 @@ class CVELCMFilterForm(BootstrapMixin, StatusFilterFormMixin, CustomFieldFilterF
     cvss_v3__gte = forms.FloatField(label="CVSSv3 Score Above", required=False)
     cvss_v3__lte = forms.FloatField(label="CVSSv3 Score Below", required=False)
 
+    vendor_last_updated_before = forms.DateField(label="Vendor Last Updated Before", required=False, widget=DatePicker())
+    vendor_last_updated_after = forms.DateField(label="Vendor Last Updated After", required=False, widget=DatePicker())    
+
     status = DynamicModelMultipleChoiceField(queryset=Status.objects.all(), required=False, to_field_name="slug")
     exclude_status = DynamicModelMultipleChoiceField(
         label="Exclude Status",
@@ -1077,6 +1085,8 @@ class CVELCMFilterForm(BootstrapMixin, StatusFilterFormMixin, CustomFieldFilterF
             "published_date_after",
             "severity",
             "status",
+            "vendor_last_updated_before",
+            "vendor_last_updated_after"
         ]
 
 

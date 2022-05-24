@@ -191,6 +191,7 @@ class SoftwareLCM(PrimaryModel):
     alias = models.CharField(max_length=50, blank=True, null=True)
     release_date = models.DateField(null=True, blank=True, verbose_name="Release Date")
     end_of_support = models.DateField(null=True, blank=True, verbose_name="End of Software Support")
+    vendor_last_updated = models.DateField(null=True, blank=True, verbose_name="Vendor Last Updated")
     documentation_url = models.URLField(blank=True, verbose_name="Documentation URL")
     long_term_support = models.BooleanField(verbose_name="Long Term Support", default=False)
     pre_release = models.BooleanField(verbose_name="Pre-Release", default=False)
@@ -201,6 +202,7 @@ class SoftwareLCM(PrimaryModel):
         "alias",
         "release_date",
         "end_of_support",
+        "vendor_last_updated",
         "documentation_url",
         "long_term_support",
         "pre_release",
@@ -232,6 +234,7 @@ class SoftwareLCM(PrimaryModel):
             self.alias,
             self.release_date,
             self.end_of_support,
+            self.vendor_last_updated,
             self.documentation_url,
             self.long_term_support,
             self.pre_release,
@@ -750,6 +753,7 @@ class CVELCM(PrimaryModel):
 
     name = models.CharField(max_length=16, blank=False, unique=True)
     published_date = models.DateField(verbose_name="Published Date")
+    vendor_last_updated = models.DateField(null=True, blank=True, verbose_name="Vendor Last Updated")
     link = models.URLField()
     status = StatusField(
         null=True,
@@ -768,6 +772,7 @@ class CVELCM(PrimaryModel):
     csv_headers = [
         "name",
         "published_date",
+        "vendor_last_updated",
         "link",
         "status",
         "description",
@@ -799,6 +804,7 @@ class CVELCM(PrimaryModel):
         return (
             self.name,
             self.published_date,
+            self.vendor_last_updated,
             self.link,
             self.status,
             self.description,
