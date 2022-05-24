@@ -194,6 +194,7 @@ class SoftwareLCMForm(BootstrapMixin, CustomFieldModelForm, RelationshipModelFor
     """SoftwareLCM creation/edit form."""
 
     tags = DynamicModelMultipleChoiceField(queryset=Tag.objects.all(), required=False)
+    vendor_last_updated = forms.DateField(widget=DatePicker(), required=False)
 
     class Meta:
         """Meta attributes."""

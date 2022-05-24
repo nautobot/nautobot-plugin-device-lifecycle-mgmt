@@ -126,7 +126,7 @@ class SoftwareLCMFilterSet(django_filters.FilterSet):
         fields = [
             "version",
             "alias",
-            "vendor_last_updated"
+            "vendor_last_updated",
             "documentation_url",
             "long_term_support",
             "pre_release",
@@ -775,8 +775,9 @@ class CVELCMFilterSet(StatusModelFilterSetMixin, CustomFieldModelFilterSet):
     cvss_v3__gte = django_filters.NumberFilter(field_name="cvss_v3", lookup_expr="gte")
     cvss_v3__lte = django_filters.NumberFilter(field_name="cvss_v3", lookup_expr="lte")
 
-    vendor_last_updated = django_filters.NumberFilter(field_name="vendor_last_updated", lookup_expr="lte")
-    vendor_last_updated = django_filters.NumberFilter(field_name="vendor_last_updated", lookup_expr="gte")
+    vendor_last_updated = django_filters.DateTimeFromToRangeFilter()
+    vendor_last_updated__gte = django_filters.NumberFilter(field_name="vendor_last_updated", lookup_expr="gte")
+    vendor_last_updated__lte = django_filters.NumberFilter(field_name="vendor_last_updated", lookup_expr="lte")
 
     status = StatusFilter()
     exclude_status = StatusFilter(field_name="status", exclude=True)
