@@ -110,4 +110,5 @@ class NestedCVELCMSerializer(WritableNestedSerializer):
             "cvss_v3",
             "fix",
             "comments",
+            "vendor_last_updated",
         ]

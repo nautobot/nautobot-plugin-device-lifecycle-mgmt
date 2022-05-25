@@ -75,16 +75,19 @@ def create_cves():
         CVELCM.objects.create(
             name="CVE-2021-1391",
             published_date="2021-03-24",
+            vendor_last_updated="2022-05-22",
             link="https://www.cvedetails.com/cve/CVE-2021-1391/",
         ),
         CVELCM.objects.create(
             name="CVE-2021-44228",
             published_date="2021-12-10",
+            vendor_last_updated="2022-05-23",
             link="https://www.cvedetails.com/cve/CVE-2021-44228/",
         ),
         CVELCM.objects.create(
             name="CVE-2020-27134",
             published_date="2020-12-11",
+            vendor_last_updated="2022-05-24",
             link="https://www.cvedetails.com/cve/CVE-2020-27134/",
         ),
     )
@@ -96,10 +99,10 @@ def create_softwares():
     device_platform_ios, _ = Platform.objects.get_or_create(name="Cisco IOS", slug="cisco_ios")
     device_platform_eos, _ = Platform.objects.get_or_create(name="Arista EOS", slug="arista_eos")
     softwares = (
-        SoftwareLCM.objects.create(device_platform=device_platform_ios, version="15.1(2)M"),
-        SoftwareLCM.objects.create(device_platform=device_platform_ios, version="4.22.9M"),
-        SoftwareLCM.objects.create(device_platform=device_platform_ios, version="21.4R3"),
-        SoftwareLCM.objects.create(device_platform=device_platform_eos, version="4.17.1M"),
-        SoftwareLCM.objects.create(device_platform=device_platform_eos, version="4.25.1F"),
+        SoftwareLCM.objects.create(device_platform=device_platform_ios, version="15.1(2)M", vendor_last_updated="2022-05-20"),
+        SoftwareLCM.objects.create(device_platform=device_platform_ios, version="4.22.9M", vendor_last_updated="2022-05-21"),
+        SoftwareLCM.objects.create(device_platform=device_platform_ios, version="21.4R3", vendor_last_updated="2022-05-22"),
+        SoftwareLCM.objects.create(device_platform=device_platform_eos, version="4.17.1M", vendor_last_updated="2022-05-23"),
+        SoftwareLCM.objects.create(device_platform=device_platform_eos, version="4.25.1F", vendor_last_updated="2022-05-24"),
     )
     return softwares
