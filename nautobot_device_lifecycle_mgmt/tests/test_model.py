@@ -65,7 +65,7 @@ class HardwareLCMTestCase(TestCase):
             end_of_support=date(2023, 4, 1),
             end_of_sw_releases=date(2024, 4, 1),
             end_of_security_patches=date(2025, 4, 1),
-            vendor_last_updated=date(2022, 5, 24),
+            last_modified_date=date(2022, 5, 24),
             documentation_url="https://test.com",
         )
 
@@ -74,7 +74,7 @@ class HardwareLCMTestCase(TestCase):
         self.assertEqual(str(hwlcm_obj.end_of_support), "2023-04-01")
         self.assertEqual(str(hwlcm_obj.end_of_sw_releases), "2024-04-01")
         self.assertEqual(str(hwlcm_obj.end_of_security_patches), "2025-04-01")
-        self.assertEqual(str(hwlcm_obj.vendor_last_updated), "2022-05-24")
+        self.assertEqual(str(hwlcm_obj.last_modified_date), "2022-05-24")
         self.assertEqual(hwlcm_obj.documentation_url, "https://test.com")
         self.assertEqual(str(hwlcm_obj), "Device Type: c9300-24 - End of support: 2023-04-01")
 
@@ -132,16 +132,16 @@ class HardwareLCMTestCase(TestCase):
         hwlcm_obj = HardwareLCM.objects.create(device_type=self.device_type, end_of_support=date(2999, 4, 1))
         self.assertFalse(hwlcm_obj.expired)
 
-    def test_create_hwlcm_vendor_last_updated(self):
-        """Successfully create basic notice with vendor_last_updated."""
+    def test_create_hwlcm_last_modified_date(self):
+        """Successfully create basic notice with last_modified_date."""
         hwlcm_obj = HardwareLCM.objects.create(
             device_type=self.device_type,
             end_of_support=date(2999, 4, 1),
-            vendor_last_updated=date(2022, 5, 24)
+            last_modified_date=date(2022, 5, 24)
         )
 
         self.assertEqual(hwlcm_obj.device_type, self.device_type)
-        self.assertEqual(str(hwlcm_obj.vendor_last_updated), "2022-05-24")
+        self.assertEqual(str(hwlcm_obj.last_modified_date), "2022-05-24")
 
 class SoftwareLCMTestCase(TestCase):
     """Tests for the SoftwareLCM model."""

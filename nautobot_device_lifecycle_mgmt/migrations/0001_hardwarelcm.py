@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ("end_of_support", models.DateField(blank=True, null=True)),
                 ("end_of_sw_releases", models.DateField(blank=True, null=True)),
                 ("end_of_security_patches", models.DateField(blank=True, null=True)),
-                ("vendor_last_updated", models.DateField(blank=True, null=True)),
+                ("last_modified_date", models.DateField(blank=True, null=True)),
                 ("documentation_url", models.URLField(blank=True)),
                 ("comments", models.TextField(blank=True, null=True)),
                 (
