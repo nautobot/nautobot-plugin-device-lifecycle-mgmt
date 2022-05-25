@@ -132,7 +132,7 @@ class HardwareLCMTestCase(TestCase):
         hwlcm_obj = HardwareLCM.objects.create(device_type=self.device_type, end_of_support=date(2999, 4, 1))
         self.assertFalse(hwlcm_obj.expired)
 
-    def test_create_hwlcm_success_eo_sale(self):
+    def test_create_hwlcm_vendor_last_updated(self):
         """Successfully create basic notice with vendor_last_updated."""
         hwlcm_obj = HardwareLCM.objects.create(
             device_type=self.device_type,

@@ -178,7 +178,6 @@ class SoftwareLCMFormTest(TestCase):  # pylint: disable=no-member
             "documentation_url": "https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-15-4m-t/series.html",
             "long_term_support": True,
             "pre_release": False,
-            "vendor_last_updated": "2022-05-24",
         }
         form = self.form_class(data)
         self.assertTrue(form.is_valid())
@@ -221,11 +220,6 @@ class SoftwareLCMFormTest(TestCase):  # pylint: disable=no-member
         self.assertIn("documentation_url", form.errors)
         self.assertIn("Enter a valid URL.", form.errors["documentation_url"])
 
-    def test_vendor_last_updated(self):
-        data = {"device_platform": self.device_platform, "version": "17.3.3 MD", "end_of_support": "2022-05-24"}
-        form = self.form_class(data)
-        self.assertTrue(form.is_valid())
-        self.assertTrue(form.save())
 
 class ValidatedSoftwareLCMFormTest(TestCase):  # pylint: disable=no-member
     """Test class for ValidatedSoftwareLCMForm forms."""
@@ -364,7 +358,6 @@ class CVELCMFormTest(TestCase):
                 "cvss_v3": 6.7,
                 "fix": "Avengers",
                 "comments": "This is very bad juju.",
-                "vendor_last_updated": "2022-05-24",
             }
         )
         self.assertTrue(form.is_valid())
@@ -381,16 +374,6 @@ class CVELCMFormTest(TestCase):
             form.errors,
         )
 
-    def test_vendor_last_updated(self):
-        form = CVELCMForm(data={
-            "name": "CVE-2022-0002",
-            "published_date": "2021-09-23",
-            "vendor_last_updated": "2022-05-24",
-            "link": "https://www.cvedetails.com/cve/CVE-2021-34699/",
-            }
-        )
-        self.assertTrue(form.is_valid())
-        self.assertTrue(form.save())
 
 class SoftwareImageLCMFormTest(TestCase):  # pylint: disable=no-member,too-many-instance-attributes
     """Test class for SoftwareImageLCMForm forms."""

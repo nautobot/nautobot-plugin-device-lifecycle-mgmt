@@ -174,7 +174,6 @@ class SoftwareLCMFilterSetTestCase(TestCase):
                 alias="Amsterdam-17.3.3 MD",
                 release_date="2019-01-10",
                 end_of_support="2022-05-15",
-                vendor_last_updated="2020-05-23",
                 documentation_url="https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-15-4m-t/series.html",
                 long_term_support=False,
                 pre_release=True,
@@ -185,7 +184,6 @@ class SoftwareLCMFilterSetTestCase(TestCase):
                 alias="EOS 4.25M",
                 release_date="2021-01-10",
                 end_of_support="2026-05-13",
-                vendor_last_updated="2020-05-23",
                 documentation_url="https://www.arista.com/softdocs",
                 long_term_support=True,
                 pre_release=False,
@@ -221,11 +219,6 @@ class SoftwareLCMFilterSetTestCase(TestCase):
         """Test pre_release filter."""
         params = {"pre_release": True}
         self.assertEqual(self.filterset(params, self.queryset).qs.count(), 1)
-
-    def test_vendor_last_updated(self):
-        """Test vendor_last_updated filter."""
-        params = {"vendor_last_updated": "2020-05-23"}
-        self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
 
 
 class ValidatedSoftwareLCMFilterSetTestCase(TestCase):
@@ -501,7 +494,6 @@ class CVELCMTestCase(TestCase):
             cvss=3,
             cvss_v2=3,
             cvss_v3=3,
-            vendor_last_updated="2022-05-23",
         )
         CVELCM.objects.create(
             name="CVE-2021-44228",
@@ -511,7 +503,6 @@ class CVELCMTestCase(TestCase):
             cvss=5,
             cvss_v2=5,
             cvss_v3=5,
-            vendor_last_updated="2022-05-20",
         )
         CVELCM.objects.create(
             name="CVE-2020-27134",
@@ -522,7 +513,6 @@ class CVELCMTestCase(TestCase):
             cvss=7,
             cvss_v2=7,
             cvss_v3=7,
-            vendor_last_updated="2022-05-24",
         )
 
     def test_q_one_year(self):
@@ -630,16 +620,6 @@ class CVELCMTestCase(TestCase):
         self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
         params = {"cvss_v3__lte": 9}
         self.assertEqual(self.filterset(params, self.queryset).qs.count(), 3)
-
-    def test_vendor_last_updated_before(self):
-        """Test vendor_last_updated_before filter."""
-        params = {"vendor_last_updated_before": "2022-05-23"}
-        self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
-
-    def test_vendor_last_updated_after(self):
-        """Test vendor_last_updated_after filter."""
-        params = {"vendor_last_updated_after": "2022-05-23"}
-        self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
 
 
 class VulnerabilityLCMTestCase(TestCase):

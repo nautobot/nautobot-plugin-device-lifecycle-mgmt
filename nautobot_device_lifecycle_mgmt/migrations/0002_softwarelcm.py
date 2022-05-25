@@ -35,7 +35,6 @@ class Migration(migrations.Migration):
                 ("alias", models.CharField(blank=True, max_length=50, null=True)),
                 ("release_date", models.DateField(blank=True, null=True)),
                 ("end_of_support", models.DateField(blank=True, null=True)),
-                ("vendor_last_updated", models.DateField(blank=True, null=True)),
                 ("documentation_url", models.URLField(blank=True)),
                 ("download_url", models.URLField(blank=True)),
                 ("image_file_name", models.CharField(blank=True, max_length=100)),

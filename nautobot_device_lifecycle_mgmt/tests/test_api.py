@@ -106,19 +106,15 @@ class SoftwareLCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=t
                 "device_platform": device_platforms[0].id,
                 "version": "15.4(3)M",
                 "end_of_support": datetime.date(2022, 2, 28),
-                "vendor_last_updated": datetime.date(2022, 5, 22),
             },
             {
                 "device_platform": device_platforms[1].id,
                 "version": "4.21.3F",
                 "end_of_support": datetime.date(2021, 8, 9),
-                "vendor_last_updated": datetime.date(2022, 5, 23),
             },
             {
                 "device_platform": device_platforms[2].id,
                 "version": "20.3R3",
-                "end_of_support": datetime.date(2023, 9, 29),
-                "vendor_last_updated": datetime.date(2022, 5, 24),
             },
         ]
 
@@ -126,19 +122,16 @@ class SoftwareLCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=t
             device_platform=device_platforms[0],
             version="15.1(2)M",
             end_of_support=datetime.date(2023, 5, 8),
-            vendor_last_updated=datetime.date(2022, 5, 22),
         )
         SoftwareLCM.objects.create(
             device_platform=device_platforms[1],
             version="4.22.9M",
             end_of_support=datetime.date(2022, 4, 11),
-            vendor_last_updated=datetime.date(2022, 5, 23),
         )
         SoftwareLCM.objects.create(
             device_platform=device_platforms[2],
             version="21.4R3",
             end_of_support=datetime.date(2024, 5, 19),
-            vendor_last_updated=datetime.date(2022, 5, 24),
         )
 
     def test_bulk_create_objects(self):
@@ -411,7 +404,6 @@ class CVELCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=too-ma
         "severity",
         "status",
         "url",
-        "vendor_last_updated",
     ]
 
     @classmethod
@@ -421,19 +413,16 @@ class CVELCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=too-ma
             {
                 "name": "CVE-2021-40128",
                 "published_date": datetime.date(2021, 11, 4),
-                "vendor_last_updated": datetime.date(2022, 5, 22),
                 "link": "https://www.cvedetails.com/cve/CVE-2021-40128/",
             },
             {
                 "name": "CVE-2021-40126",
                 "published_date": datetime.date(2021, 11, 4),
-                "vendor_last_updated": datetime.date(2022, 5, 23),
                 "link": "https://www.cvedetails.com/cve/CVE-2021-40126/",
             },
             {
                 "name": "CVE-2021-40125",
                 "published_date": datetime.date(2021, 10, 27),
-                "vendor_last_updated": datetime.date(2022, 5, 24),
                 "link": "https://www.cvedetails.com/cve/CVE-2021-40125/",
             },
         ]
@@ -441,19 +430,16 @@ class CVELCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=too-ma
         CVELCM.objects.create(
             name="CVE-2021-1391",
             published_date="2021-03-24",
-            vendor_last_updated="2022-05-22",
             link="https://www.cvedetails.com/cve/CVE-2021-1391/",
         )
         CVELCM.objects.create(
             name="CVE-2021-44228",
             published_date="2021-12-10",
-            vendor_last_updated="2022-05-23",
             link="https://www.cvedetails.com/cve/CVE-2021-44228/",
         )
         CVELCM.objects.create(
             name="CVE-2020-27134",
             published_date="2020-12-11",
-            vendor_last_updated="2022-05-24",
             link="https://www.cvedetails.com/cve/CVE-2020-27134/",
         )
 
