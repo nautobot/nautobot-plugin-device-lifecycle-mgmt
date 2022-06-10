@@ -150,11 +150,12 @@ class HardwareLCMFormTest(TestCase):
         self.assertIn("Enter a valid URL.", form.errors["documentation_url"])
 
     def test_last_modified_date(self):
-        form = HardwareLCMForm(data={
-            "device_type": self.device_type,
-            "end_of_sale": "2021-04-01",
-            "end_of_support": "2022-04-01",
-            "last_modified_date": "2022-05-24",
+        form = HardwareLCMForm(
+            data={ 
+                "device_type": self.device_type,
+                "end_of_sale": "2021-04-01",
+                "end_of_support": "2022-04-01",
+                "last_modified_date": "2022-05-24",
             }
         )
         self.assertTrue(form.is_valid())

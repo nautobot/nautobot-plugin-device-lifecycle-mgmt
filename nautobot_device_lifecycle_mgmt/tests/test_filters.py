@@ -155,6 +155,7 @@ class HardwareLCMTestCase(TestCase):
         params = {"last_modified_date": "2022-05-23"}
         self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
 
+
 class SoftwareLCMFilterSetTestCase(TestCase):
     """Tests for SoftwareLCMFilterSet."""
 

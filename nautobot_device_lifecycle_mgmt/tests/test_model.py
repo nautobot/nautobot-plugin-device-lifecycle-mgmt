@@ -135,13 +135,12 @@ class HardwareLCMTestCase(TestCase):
     def test_create_hwlcm_last_modified_date(self):
         """Successfully create basic notice with last_modified_date."""
         hwlcm_obj = HardwareLCM.objects.create(
-            device_type=self.device_type,
-            end_of_support=date(2999, 4, 1),
-            last_modified_date=date(2022, 5, 24)
+            device_type=self.device_type, end_of_support=date(2999, 4, 1), last_modified_date=date(2022, 5, 24)
         )
 
         self.assertEqual(hwlcm_obj.device_type, self.device_type)
         self.assertEqual(str(hwlcm_obj.last_modified_date), "2022-05-24")
+
 
 class SoftwareLCMTestCase(TestCase):
     """Tests for the SoftwareLCM model."""

@@ -58,15 +58,39 @@ class HardwareLCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=t
             DeviceType.objects.create(model="c9410", slug="c9410", manufacturer=manufacturer),
         )
 
-        HardwareLCM.objects.create(device_type=device_types[3], end_of_sale=datetime.date(2021, 4, 1), last_modified_date=datetime.date(2020, 4, 1))
-        HardwareLCM.objects.create(device_type=device_types[4], end_of_sale=datetime.date(2021, 4, 1), last_modified_date=datetime.date(2020, 4, 1))
-        HardwareLCM.objects.create(device_type=device_types[5], end_of_sale=datetime.date(2021, 4, 1), last_modified_date=datetime.date(2020, 4, 1))
+        HardwareLCM.objects.create(
+            device_type=device_types[3],
+            end_of_sale=datetime.date(2021, 4, 1),
+            last_modified_date=datetime.date(2020, 4, 1)
+        )
+        HardwareLCM.objects.create(
+            device_type=device_types[4],
+            end_of_sale=datetime.date(2021, 4, 1),
+            last_modified_date=datetime.date(2020, 4, 1)
+        )
+        HardwareLCM.objects.create(
+            device_type=device_types[5],
+            end_of_sale=datetime.date(2021, 4, 1),
+            last_modified_date=datetime.date(2020, 4, 1)
+        )
 
         cls.create_data = [
             # Setting end_of_sale as datetime.date for proper comparison
-            {"device_type": device_types[0].id, "end_of_sale": datetime.date(2021, 4, 1), "last_modified_date": datetime.date(2020, 4, 1)},
-            {"device_type": device_types[1].id, "end_of_sale": datetime.date(2021, 4, 1), "last_modified_date": datetime.date(2020, 4, 1)},
-            {"device_type": device_types[2].id, "end_of_sale": datetime.date(2021, 4, 1), "last_modified_date": datetime.date(2020, 4, 1)},
+            {
+                "device_type": device_types[0].id,
+                "end_of_sale": datetime.date(2021, 4, 1),
+                "last_modified_date": datetime.date(2020, 4, 1)
+            },
+            {
+                "device_type": device_types[1].id,
+                "end_of_sale": datetime.date(2021, 4, 1),
+                "last_modified_date": datetime.date(2020, 4, 1)
+            },
+            {
+                "device_type": device_types[2].id,
+                "end_of_sale": datetime.date(2021, 4, 1),
+                "last_modified_date": datetime.date(2020, 4, 1)
+            },
         ]
 
     def test_bulk_create_objects(self):
