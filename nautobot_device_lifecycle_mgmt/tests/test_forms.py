@@ -151,7 +151,7 @@ class HardwareLCMFormTest(TestCase):
 
     def test_last_modified_date(self):
         form = HardwareLCMForm(
-            data={ 
+            data={
                 "device_type": self.device_type,
                 "end_of_sale": "2021-04-01",
                 "end_of_support": "2022-04-01",
@@ -160,6 +160,7 @@ class HardwareLCMFormTest(TestCase):
         )
         self.assertTrue(form.is_valid())
         self.assertTrue(form.save())
+
 
 class SoftwareLCMFormTest(TestCase):  # pylint: disable=no-member
     """Test class for SoftwareLCM forms."""
