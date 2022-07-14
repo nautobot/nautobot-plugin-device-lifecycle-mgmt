@@ -337,9 +337,9 @@ class CVELCMTestCase(TestCase):
     def test_create_cvelcm_required_only(self):
         """Successfully create CVELCM with required fields only."""
         cvelcm = CVELCM.objects.create(
-            name="CVE-2021-1391", 
-            published_date="2021-03-24", 
-            link="https://www.cvedetails.com/cve/CVE-2021-1391/"
+            name="CVE-2021-1391",
+            published_date="2021-03-24",
+            link="https://www.cvedetails.com/cve/CVE-2021-1391/",
         )
 
         self.assertEqual(cvelcm.name, "CVE-2021-1391")
@@ -379,10 +379,10 @@ class CVELCMTestCase(TestCase):
     def test_create_cve_soft_relationship_association(self):
         """Successfully create a relationship between CVE and Software."""
         cvelcm = CVELCM.objects.create(
-            name="CVE-2021-1391", 
-            published_date="2021-03-24", 
-            last_modified_date="2022-04-01", 
-            link="https://www.cvedetails.com/cve/CVE-2021-1391/"
+            name="CVE-2021-1391",
+            published_date="2021-03-24",
+            last_modified_date="2022-04-01",
+            link="https://www.cvedetails.com/cve/CVE-2021-1391/",
         )
 
         association = RelationshipAssociation.objects.create(

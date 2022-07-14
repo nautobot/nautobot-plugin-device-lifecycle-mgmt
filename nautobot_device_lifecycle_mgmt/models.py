@@ -747,11 +747,7 @@ class CVELCM(PrimaryModel):
 
     name = models.CharField(max_length=16, blank=False, unique=True)
     published_date = models.DateField(verbose_name="Published Date")
-    last_modified_date = models.DateField(
-        null=True,
-        blank=True,
-        verbose_name="Last Modified Date"
-        )
+    last_modified_date = models.DateField(null=True, blank=True, verbose_name="Last Modified Date")
     link = models.URLField()
     status = StatusField(
         null=True,

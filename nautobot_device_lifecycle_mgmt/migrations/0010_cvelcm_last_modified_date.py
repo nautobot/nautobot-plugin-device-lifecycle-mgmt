@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('nautobot_device_lifecycle_mgmt', '0009_software_remove_image_fields'),
+        ("nautobot_device_lifecycle_mgmt", "0009_software_remove_image_fields"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cvelcm',
-            name='last_modified_date',
+            model_name="cvelcm",
+            name="last_modified_date",
             field=models.DateField(blank=True, null=True),
         ),
     ]

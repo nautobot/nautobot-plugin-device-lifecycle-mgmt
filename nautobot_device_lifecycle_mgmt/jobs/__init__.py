@@ -2,4 +2,9 @@
 from .cve_tracking import GenerateVulnerabilities, NistCveSyncSoftware
 from .lifecycle_reporting import DeviceSoftwareValidationFullReport, InventoryItemSoftwareValidationFullReport
 
-jobs = [DeviceSoftwareValidationFullReport, InventoryItemSoftwareValidationFullReport, GenerateVulnerabilities, NistCveSyncSoftware]
+jobs = [
+    DeviceSoftwareValidationFullReport,
+    InventoryItemSoftwareValidationFullReport,
+    GenerateVulnerabilities,
+    NistCveSyncSoftware,
+]
