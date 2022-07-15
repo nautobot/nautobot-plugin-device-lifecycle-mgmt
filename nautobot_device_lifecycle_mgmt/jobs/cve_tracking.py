@@ -279,7 +279,7 @@ class NistCveSyncSoftware(Job):
                         self.log_info(message=f"""Unable to update {cve.name}.""")
                         pass
 
-            except ValueError:
+            except Exception:
                 self.log_info(message='f"""This CVE did not return data."""')
                 pass
 
