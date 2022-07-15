@@ -134,7 +134,7 @@ class NistCveSyncSoftware(Job):
 
     def create_cpe_software_search_url(self, manufacturer: str, platform: str, version: str) -> str:
         """Return the url for a cpe search against the NIST DB."""
-        base_url = f"""https://services.nvd.nist.gov/rest/json/cpes/1.0?addOns=cves&cpeMatchString=cpe:2.3:*:"""
+        base_url = 'f"""https://services.nvd.nist.gov/rest/json/cpes/1.0?addOns=cves&cpeMatchString=cpe:2.3:*:"""'
         extended_url = f"{manufacturer}:{platform}:{version}:*:*:*:*:*:*:*"
 
         return f"{base_url}{extended_url}"
@@ -214,9 +214,9 @@ class NistCveSyncSoftware(Job):
                     name=cve,
                     defaults={
                         "description": (
-                            f'{result["description"][0:251]}...'
-                            if len(result["description"]) > 255
-                            else result["description"]
+                            f'{info["description"][0:251]}...'
+                            if len(info["description"]) > 255
+                            else info["description"]
                         ),
                         "published_date": date.fromisoformat(info["published_date"][0:10]),
                         "last_modified_date": date.fromisoformat(info["modified_date"][0:10]),
@@ -249,7 +249,7 @@ class NistCveSyncSoftware(Job):
 
     def update_cves(self):
         """A method to ensure the CVE in DLC is the latest version."""
-        self.log_info(message=f"""Checking for CVE Modifications""")
+        self.log_info(message='f"""Checking for CVE Modifications"""')
         base_url = "https://services.nvd.nist.gov/rest/json/cve/1.0/"
         dlc_cves = CVELCM.objects.all()
 
@@ -275,12 +275,12 @@ class NistCveSyncSoftware(Job):
                         cve.validated_save()
                         self.log_info(message=f"""{cve.name} was modified.""")
 
-                    except:
+                    except ValueError:
                         self.log_info(message=f"""Unable to update {cve.name}.""")
                         pass
 
-            except:
-                self.log_info(message=f"""CVE CHECK FAILED FOR THIS CVE.  RERUN JOB.""")
+            except ValueError:
+                self.log_info(message='f"""This CVE did not return data."""')
                 pass
 
-        self.log_success(message=f"""All CVE's requiring modifications have been updated.""")
+        self.log_success(message='f"""All CVE\'s requiring modifications have been updated."""')
