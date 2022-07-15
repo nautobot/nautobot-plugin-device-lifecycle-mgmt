@@ -134,7 +134,9 @@ class NistCveSyncSoftware(Job):
 
     def create_cpe_software_search_url(self, manufacturer: str, platform: str, version: str) -> str:
         """Return the url for a cpe search against the NIST DB."""
-        base_url = f"""https://services.nvd.nist.gov/rest/json/cpes/1.0?addOns=cves&cpeMatchString=cpe:2.3:*:"""  # noqa: F541
+        base_url = (
+            f"""https://services.nvd.nist.gov/rest/json/cpes/1.0?addOns=cves&cpeMatchString=cpe:2.3:*:"""  # noqa: F541
+        )
         extended_url = f"{manufacturer}:{platform}:{version}:*:*:*:*:*:*:*"
 
         return f"{base_url}{extended_url}"
