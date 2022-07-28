@@ -49,6 +49,7 @@ class HardwareLCM(PrimaryModel):
     end_of_support = models.DateField(null=True, blank=True, verbose_name="End of Support")
     end_of_sw_releases = models.DateField(null=True, blank=True, verbose_name="End of Software Releases")
     end_of_security_patches = models.DateField(null=True, blank=True, verbose_name="End of Security Patches")
+    last_modified_date = models.DateField(null=True, blank=True, verbose_name="Last Updated by Vendor")
     documentation_url = models.URLField(blank=True, verbose_name="Documentation URL")
     comments = models.TextField(null=True, blank=True, verbose_name="Comments")
 
@@ -60,6 +61,7 @@ class HardwareLCM(PrimaryModel):
         "end_of_support",
         "end_of_sw_releases",
         "end_of_security_patches",
+        "last_modified_date",
         "documentation_url",
         "comments",
     ]
@@ -148,6 +150,7 @@ class HardwareLCM(PrimaryModel):
             self.end_of_support,
             self.end_of_sw_releases,
             self.end_of_security_patches,
+            self.last_modified_date,
             self.documentation_url,
             self.comments,
         )

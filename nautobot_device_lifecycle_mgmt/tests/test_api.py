@@ -42,6 +42,7 @@ class HardwareLCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=t
         "inventory_item",
         "release_date",
         "tags",
+        "last_modified_date",
     ]
 
     @classmethod
@@ -57,15 +58,39 @@ class HardwareLCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=t
             DeviceType.objects.create(model="c9410", slug="c9410", manufacturer=manufacturer),
         )
 
-        HardwareLCM.objects.create(device_type=device_types[3], end_of_sale=datetime.date(2021, 4, 1))
-        HardwareLCM.objects.create(device_type=device_types[4], end_of_sale=datetime.date(2021, 4, 1))
-        HardwareLCM.objects.create(device_type=device_types[5], end_of_sale=datetime.date(2021, 4, 1))
+        HardwareLCM.objects.create(
+            device_type=device_types[3],
+            end_of_sale=datetime.date(2021, 4, 1),
+            last_modified_date=datetime.date(2020, 4, 1),
+        )
+        HardwareLCM.objects.create(
+            device_type=device_types[4],
+            end_of_sale=datetime.date(2021, 4, 1),
+            last_modified_date=datetime.date(2020, 4, 1),
+        )
+        HardwareLCM.objects.create(
+            device_type=device_types[5],
+            end_of_sale=datetime.date(2021, 4, 1),
+            last_modified_date=datetime.date(2020, 4, 1),
+        )
 
         cls.create_data = [
             # Setting end_of_sale as datetime.date for proper comparison
-            {"device_type": device_types[0].id, "end_of_sale": datetime.date(2021, 4, 1)},
-            {"device_type": device_types[1].id, "end_of_sale": datetime.date(2021, 4, 1)},
-            {"device_type": device_types[2].id, "end_of_sale": datetime.date(2021, 4, 1)},
+            {
+                "device_type": device_types[0].id,
+                "end_of_sale": datetime.date(2021, 4, 1),
+                "last_modified_date": datetime.date(2020, 4, 1),
+            },
+            {
+                "device_type": device_types[1].id,
+                "end_of_sale": datetime.date(2021, 4, 1),
+                "last_modified_date": datetime.date(2020, 4, 1),
+            },
+            {
+                "device_type": device_types[2].id,
+                "end_of_sale": datetime.date(2021, 4, 1),
+                "last_modified_date": datetime.date(2020, 4, 1),
+            },
         ]
 
     def test_bulk_create_objects(self):
@@ -114,18 +139,23 @@ class SoftwareLCMAPITest(APIViewTestCases.APIViewTestCase):  # pylint: disable=t
             {
                 "device_platform": device_platforms[2].id,
                 "version": "20.3R3",
-                "end_of_support": datetime.date(2023, 9, 29),
             },
         ]
 
         SoftwareLCM.objects.create(
-            device_platform=device_platforms[0], version="15.1(2)M", end_of_support=datetime.date(2023, 5, 8)
+            device_platform=device_platforms[0],
+            version="15.1(2)M",
+            end_of_support=datetime.date(2023, 5, 8),
         )
         SoftwareLCM.objects.create(
-            device_platform=device_platforms[1], version="4.22.9M", end_of_support=datetime.date(2022, 4, 11)
+            device_platform=device_platforms[1],
+            version="4.22.9M",
+            end_of_support=datetime.date(2022, 4, 11),
         )
         SoftwareLCM.objects.create(
-            device_platform=device_platforms[2], version="21.4R3", end_of_support=datetime.date(2024, 5, 19)
+            device_platform=device_platforms[2],
+            version="21.4R3",
+            end_of_support=datetime.date(2024, 5, 19),
         )
 
     def test_bulk_create_objects(self):

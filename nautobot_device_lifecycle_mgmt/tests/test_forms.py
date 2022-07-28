@@ -45,6 +45,7 @@ class HardwareLCMFormTest(TestCase):
                 "end_of_support": "2022-04-01",
                 "end_of_sw_releases": "2023-04-01",
                 "end_of_security_patches": "2024-04-01",
+                "last_modified_date": "2022-05-24",
                 "documentation_url": "https://cisco.com",
             }
         )
@@ -147,6 +148,18 @@ class HardwareLCMFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn("documentation_url", form.errors)
         self.assertIn("Enter a valid URL.", form.errors["documentation_url"])
+
+    def test_last_modified_date(self):
+        form = HardwareLCMForm(
+            data={
+                "device_type": self.device_type,
+                "end_of_sale": "2021-04-01",
+                "end_of_support": "2022-04-01",
+                "last_modified_date": "2022-05-24",
+            }
+        )
+        self.assertTrue(form.is_valid())
+        self.assertTrue(form.save())
 
 
 class SoftwareLCMFormTest(TestCase):  # pylint: disable=no-member

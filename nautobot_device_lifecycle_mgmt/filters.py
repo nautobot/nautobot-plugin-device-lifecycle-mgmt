@@ -63,6 +63,10 @@ class HardwareLCMFilterSet(django_filters.FilterSet):
     end_of_sw_releases__gte = django_filters.DateFilter(field_name="end_of_sw_releases", lookup_expr="gte")
     end_of_sw_releases__lte = django_filters.DateFilter(field_name="end_of_sw_releases", lookup_expr="lte")
 
+    last_modified_date = django_filters.DateFilter()
+    last_modified_date__gte = django_filters.DateFilter(field_name="last_modified_date", lookup_expr="gte")
+    last_modified_date__lte = django_filters.DateFilter(field_name="last_modified_date", lookup_expr="lte")
+
     expired = django_filters.BooleanFilter(method="expired_search", label="Expired")
 
     class Meta:
@@ -77,6 +81,7 @@ class HardwareLCMFilterSet(django_filters.FilterSet):
             "end_of_security_patches",
             "inventory_item",
             "documentation_url",
+            "last_modified_date",
             "expired",
         ]
 

@@ -66,6 +66,7 @@ class HardwareLCMTestCase(TestCase):
                 end_of_support="2023-04-01",
                 end_of_sw_releases="2024-04-01",
                 end_of_security_patches="2025-04-01",
+                last_modified_date="2022-05-23",
                 documentation_url="https://cisco.com/c9300-24",
             ),
             HardwareLCM.objects.create(
@@ -74,6 +75,7 @@ class HardwareLCMTestCase(TestCase):
                 end_of_support="2025-05-01",
                 end_of_sw_releases="2026-05-01",
                 end_of_security_patches="2027-05-01",
+                last_modified_date="2022-05-23",
                 documentation_url="https://cisco.com/c9300-48",
             ),
         )
@@ -146,6 +148,11 @@ class HardwareLCMTestCase(TestCase):
     def test_device_id_all(self):
         """Test device_id filter."""
         params = {"device_id": [self.devices[0].id, self.devices[1].id]}
+        self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
+
+    def test_last_modified_date(self):
+        """Test last_modified_date filter."""
+        params = {"last_modified_date": "2022-05-23"}
         self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
 
 

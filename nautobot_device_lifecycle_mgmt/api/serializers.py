@@ -57,6 +57,7 @@ class HardwareLCMSerializer(TaggedObjectSerializer, CustomFieldModelSerializer):
             "end_of_support",
             "end_of_sw_releases",
             "end_of_security_patches",
+            "last_modified_date",
             "documentation_url",
             "custom_fields",
             "tags",

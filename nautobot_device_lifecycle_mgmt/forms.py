@@ -88,6 +88,7 @@ class HardwareLCMForm(BootstrapMixin, CustomFieldModelForm, RelationshipModelFor
             "end_of_support": DatePicker(),
             "end_of_sw_releases": DatePicker(),
             "end_of_security_patches": DatePicker(),
+            "last_modified_date": DatePicker(),
         }
 
 
@@ -100,6 +101,7 @@ class HardwareLCMBulkEditForm(BootstrapMixin, BulkEditForm):
     end_of_support = forms.DateField(widget=DatePicker(), required=False)
     end_of_sw_releases = forms.DateField(widget=DatePicker(), required=False)
     end_of_security_patches = forms.DateField(widget=DatePicker(), required=False)
+    last_modified_date = forms.DateField(widget=DatePicker(), required=False)
     documentation_url = forms.URLField(required=False)
     comments = forms.CharField(required=False)
 
@@ -112,6 +114,7 @@ class HardwareLCMBulkEditForm(BootstrapMixin, BulkEditForm):
             "end_of_support",
             "end_of_sw_releases",
             "end_of_security_patches",
+            "last_modified_date",
             "documentation_url",
             "comments",
         ]
@@ -150,6 +153,7 @@ class HardwareLCMFilterForm(BootstrapMixin, forms.ModelForm):
             "end_of_support",
             "end_of_sw_releases",
             "end_of_security_patches",
+            "last_modified_date",
             "documentation_url",
         ]
 
@@ -158,6 +162,7 @@ class HardwareLCMFilterForm(BootstrapMixin, forms.ModelForm):
             "end_of_support": DatePicker(),
             "end_of_sw_releases": DatePicker(),
             "end_of_security_patches": DatePicker(),
+            "last_modified_date": DatePicker(),
         }
 
 
