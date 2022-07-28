@@ -199,7 +199,6 @@ class SoftwareLCMListView(generic.ObjectListView):
     table = SoftwareLCMTable
     action_buttons = (
         "add",
-        "delete",
         "import",
         "export",
     )
@@ -301,7 +300,6 @@ class SoftwareImageLCMListView(generic.ObjectListView):
     table = SoftwareImageLCMTable
     action_buttons = (
         "add",
-        "delete",
         "import",
         "export",
     )
@@ -359,7 +357,6 @@ class ValidatedSoftwareLCMListView(generic.ObjectListView):
     table = ValidatedSoftwareLCMTable
     action_buttons = (
         "add",
-        "delete",
         "import",
         "export",
     )
