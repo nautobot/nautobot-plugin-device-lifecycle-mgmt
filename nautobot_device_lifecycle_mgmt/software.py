@@ -1,7 +1,7 @@
 """Django classes and functions handling Software Lifecycle related functionality."""
 
 from django.contrib.contenttypes.models import ContentType
-from nautobot.dcim.models import Device, InventoryItem
+from nautobot.dcim.models import Device, InventoryItem, DeviceType
 from nautobot.extras.models import RelationshipAssociation
 
 from nautobot_device_lifecycle_mgmt.filters import ValidatedSoftwareLCMFilterSet
@@ -80,3 +80,10 @@ class InventoryItemSoftware(ItemSoftware):
 
     soft_obj_model = InventoryItem
     soft_relation_name = "inventory_item_soft"
+
+
+class DeviceTypeSoftware(ItemSoftware):
+    """Computes validated software objects for Device Type objects."""
+
+    soft_obj_model = DeviceType
+    soft_relation_name = "device_type_soft"

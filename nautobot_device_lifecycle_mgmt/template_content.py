@@ -9,6 +9,7 @@ from .models import HardwareLCM
 from .software import (
     DeviceSoftware,
     InventoryItemSoftware,
+    DeviceTypeSoftware,
 )
 
 
@@ -118,10 +119,36 @@ class InventoryItemSoftwareLCMAndValidatedSoftwareLCM(
         )
 
 
+class DeviceTypeSoftwareLCMAndValidatedSoftwareLCM(
+    PluginTemplateExtension,
+):  # pylint: disable=abstract-method
+    """Class to add table for SoftwareLCM and ValidatedSoftwareLCM related to device type."""
+
+    model = "dcim.devicetype"
+
+    def __init__(self, context):
+        """Init setting up the DeviceTypeSoftwareLCMAndValidatedSoftwareLCM object."""
+        super().__init__(context)
+        self.device_type_software = DeviceTypeSoftware(item_obj=self.context["object"])
+
+    def right_page(self):
+        """Display table on right side of page."""
+        extra_context = {
+            "validsoft_table": self.device_type_software.get_validated_software_table(),
+            "obj_soft_valid": self.device_type_software.validate_software(),
+        }
+
+        return self.render(
+            "nautobot_device_lifecycle_mgmt/inc/software_and_validatedsoftware_info.html",
+            extra_context=extra_context,
+        )
+
+
 template_extensions = [
     DeviceTypeHWLCM,
     DeviceHWLCM,
     InventoryItemHWLCM,
     DeviceSoftwareLCMAndValidatedSoftwareLCM,
     InventoryItemSoftwareLCMAndValidatedSoftwareLCM,
+    DeviceTypeSoftwareLCMAndValidatedSoftwareLCM,
 ]

@@ -9,7 +9,7 @@ from django.conf import settings
 from nautobot.extras.utils import extras_features
 from nautobot.extras.models.statuses import StatusField
 from nautobot.core.models.generics import PrimaryModel, OrganizationalModel
-from nautobot.dcim.models import Device, InventoryItem
+from nautobot.dcim.models import Device, InventoryItem, DeviceType
 from nautobot.utilities.querysets import RestrictedQuerySet
 
 from nautobot_device_lifecycle_mgmt import choices
@@ -20,6 +20,7 @@ from nautobot_device_lifecycle_mgmt.software_filters import (
     InventoryItemSoftwareFilter,
     DeviceSoftwareImageFilter,
     InventoryItemSoftwareImageFilter,
+    DeviceTypeValidatedSoftwareFilter,
 )
 
 
@@ -332,6 +333,8 @@ class ValidatedSoftwareLCMQuerySet(RestrictedQuerySet):
             qs = DeviceValidatedSoftwareFilter(qs=self, item_obj=obj).filter_qs()
         elif isinstance(obj, InventoryItem):
             qs = InventoryItemValidatedSoftwareFilter(qs=self, item_obj=obj).filter_qs()
+        elif isinstance(obj, DeviceType):
+            qs = DeviceTypeValidatedSoftwareFilter(qs=self, item_obj=obj).filter_qs()
         else:
             qs = self
 
