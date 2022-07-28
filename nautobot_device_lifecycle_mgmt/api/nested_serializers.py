@@ -101,6 +101,7 @@ class NestedCVELCMSerializer(WritableNestedSerializer):
             "display",
             "name",
             "published_date",
+            "last_modified_date",
             "link",
             "status",
             "description",

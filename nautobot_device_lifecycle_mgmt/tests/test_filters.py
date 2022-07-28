@@ -484,6 +484,7 @@ class CVELCMTestCase(TestCase):
         CVELCM.objects.create(
             name="CVE-2021-1391",
             published_date="2021-03-24",
+            last_modified_date="2021-04-24",
             link="https://www.cvedetails.com/cve/CVE-2021-1391/",
             cvss=3,
             cvss_v2=3,
@@ -492,6 +493,7 @@ class CVELCMTestCase(TestCase):
         CVELCM.objects.create(
             name="CVE-2021-44228",
             published_date="2021-12-10",
+            last_modified_date="2022-04-24",
             link="https://www.cvedetails.com/cve/CVE-2021-44228/",
             status=not_fixed,
             cvss=5,
@@ -547,6 +549,16 @@ class CVELCMTestCase(TestCase):
     def test_published_date_after(self):
         """Test published_date_after filter."""
         params = {"published_date_after": "2021-01-01"}
+        self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
+
+    def test_last_modified_date_before(self):
+        """Test last_modified_date_before filter."""
+        params = {"last_modified_date_before": "2021-01-01"}
+        self.assertEqual(self.filterset(params, self.queryset).qs.count(), 0)
+
+    def test_last_modified_after(self):
+        """Test last_modified_date_after filter."""
+        params = {"last_modified_date_after": "2021-01-01"}
         self.assertEqual(self.filterset(params, self.queryset).qs.count(), 2)
 
     def test_cvss_gte(self):

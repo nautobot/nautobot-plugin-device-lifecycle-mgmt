@@ -758,6 +758,10 @@ class CVELCMFilterSet(StatusModelFilterSetMixin, CustomFieldModelFilterSet):
     published_date__gte = django_filters.DateFilter(field_name="published_date", lookup_expr="gte")
     published_date__lte = django_filters.DateFilter(field_name="published_date", lookup_expr="lte")
 
+    last_modified_date = django_filters.DateTimeFromToRangeFilter()
+    last_modified_date__gte = django_filters.DateFilter(field_name="last_modified_date", lookup_expr="gte")
+    last_modified_date__lte = django_filters.DateFilter(field_name="last_modified_date", lookup_expr="lte")
+
     cvss__gte = django_filters.NumberFilter(field_name="cvss", lookup_expr="gte")
     cvss__lte = django_filters.NumberFilter(field_name="cvss", lookup_expr="lte")
 
